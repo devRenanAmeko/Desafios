@@ -1,0 +1,51 @@
+<?php
+function calcularFaturamento($faturamento_diario) {
+    $menor_valor = PHP_INT_MAX;
+    $maior_valor = PHP_INT_MIN;
+    $soma_faturamento = 0;
+    $dias_com_faturamento = 0;
+
+    foreach ($faturamento_diario as $valor) {
+        if ($valor > 0) { 
+            $soma_faturamento += $valor;
+            $dias_com_faturamento++;
+
+            //verifica se o valor e menor ou maior e guarda na variavel
+            if ($valor < $menor_valor) {
+                $menor_valor = $valor;
+            }
+            
+            if ($valor > $maior_valor) {
+                $maior_valor = $valor;
+            }
+        }
+    }
+
+    //calcula media mensal (se dias com faturamento for maior que 0, calcula a media normal, se nao é igual a 0)
+    $media_mensal = $dias_com_faturamento > 0 ? $soma_faturamento / $dias_com_faturamento : 0;
+
+    //dias com faturamento superior a media mensal
+    $dias_acima_media = 0;
+    foreach ($faturamento_diario as $valor) {
+        if ($valor > $media_mensal) {
+            $dias_acima_media++;
+        }
+    }
+
+    return [
+        'menor_valor' => $menor_valor,
+        'maior_valor' => $maior_valor,
+        'dias_acima_media' => $dias_acima_media
+    ];
+}
+
+
+$faturamento_diario = [
+    1000, 9000, 0, 3500, 0, 6200, 5000, 0, 0, 400, 0, 35, 0, 50
+];
+
+$resultados = calcularFaturamento($faturamento_diario);
+echo "menor valor de faturamento: ".$resultados['menor_valor'].PHP_EOL;
+echo "maior valor de faturamento: ".$resultados['maior_valor'].PHP_EOL;
+echo "dias com faturamento acima da media mensal: ".$resultados['dias_acima_media'].PHP_EOL;
+
