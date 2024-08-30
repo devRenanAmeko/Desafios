@@ -1,0 +1,32 @@
+<?php
+//conta a quantidade de caracteres e cria uma string
+function inverterString($str) {
+    $comprimento = strlen($str); 
+    $caracteres = []; 
+
+    //for de tras para frente, vai adicionando os caracteres a string
+    for ($i = $comprimento - 1; $i >= 0; $i--) {
+        $caracteres[] = $str[$i]; 
+    }
+    
+    /*transforma o array: 
+    [0] => o
+    [1] => i
+    [2] => f
+    [3] => a
+    [4] => s
+    [5] => e
+    [6] => d
+    em uma string unica 'oifased'
+    */
+    $str_invertida = implode('', $caracteres);
+
+    return $str_invertida; 
+}
+
+
+$string = "desafio";
+$string_invertida = inverterString($string);
+echo "original:" $string.PHP_EOL;
+echo "invertida:" $string_invertida.PHP_EOL;
+
