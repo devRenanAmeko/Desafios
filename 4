@@ -1,0 +1,18 @@
+<?php
+$faturamento = [
+    'SP' => 67836.43,
+    'RJ' => 36678.66,
+    'MG' => 29229.88,
+    'ES' => 27165.48,
+    'outros' => 19849.53
+];
+
+//soma total dos valores
+$total_faturamento = array_sum($faturamento);
+
+//calcula a % de cada estado individualmente
+foreach ($faturamento as $estado => $valor) {
+    $percentual = ($valor / $total_faturamento) * 100;
+    echo "percentual de representação de $estado: " . number_format($percentual, 2) . "%".PHP_EOL;
+}
+?>
