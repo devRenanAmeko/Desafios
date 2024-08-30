@@ -1,0 +1,30 @@
+<?php
+
+//numero a ser verificado, pode ser alterado com um READLINE(); para pegar um valor digitado pelo usuario
+$numero = 21; 
+
+//variaveis
+$n1 = 0;
+$n2 = 1;
+
+//se o número é 0 ou 1, que sao os primeiros numeros da sequencia
+if ($numero == $n1 || $numero == $n2) {
+    echo "o numero $numero pertence a sequência";
+    exit;
+}
+
+//verifica se o número informado esta na sequencia de fibonacci
+while (true) {
+    $n3 = $n1 + $n2;
+    if ($n3 == $numero) {
+        echo "o numero $numero pertence a sequência";
+        break;
+    } elseif ($n3 > $numero) {
+        echo "o numero $numero nao pertence a sequência";
+        break;
+    }
+    //variaveis atualizadas com os novos valores
+    $n1 = $n2;
+    $n2 = $n3;
+}
+?>
